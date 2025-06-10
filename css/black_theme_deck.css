@@ -1,0 +1,50 @@
+/* Custom Black Theme CSS for reveal.js with updated color scheme */
+
+@import url("https://fonts.googleapis.com/css?family=Montserrat:700");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,700italic");
+
+:root {
+  --background-color: #35327f;
+  --main-font: 'Open Sans', sans-serif;
+  --link-color: #817ecc;
+  --link-color-hover: #b6b5e2;
+  --heading-font: 'Montserrat', Impact, sans-serif;
+  --selection-background-color: #ececf7;
+  --light-bg-text-color: #4c48b6;
+}
+
+body {
+  background-color: var(--background-color);
+  font-family: var(--main-font);
+  color: white;
+}
+
+.reveal a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+.reveal a:hover {
+  color: var(--link-color-hover);
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  font-family: var(--heading-font);
+  text-shadow: none;
+  letter-spacing: -0.03em;
+  text-transform: none;
+  color: white;
+}
+
+::selection {
+  background: var(--selection-background-color);
+}
+
+.reveal .slide-background.light {
+  color: var(--light-bg-text-color);
+}

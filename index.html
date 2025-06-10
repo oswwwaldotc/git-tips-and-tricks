@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title></title>
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/simple.css" id="theme" />
+    <link rel="stylesheet" href="css/vs2015.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+	<link rel="stylesheet" href="plugin/customcontrols/style.css">
+	<link rel="stylesheet" href="plugin/chalkboard/style.css">
+
+	<link rel="stylesheet" href="plugin/reveal-pointer/pointer.css" />
+
+
+    <script defer src="dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Git: Tips & Tricks 🧑‍💻
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## AI-Generated Content Disclaimer
+
+>  Content is provided for informational purposes only and may contain inaccuracies. It does not represent official guidance or guaranteed correctness. Always validate critical information with trusted sources before applying it in engineering workflows or decision-making. Use discretion.
+</div></script></section></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Introduction 🎓
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 1. Introduction to Version Control System (VCS)
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### What is Version Control?
+- Definition: 
+  - Version Control Systems (VCS) are software tools that help a team manage changes to source code over time. They keep track of every modification to the code in a special kind of database. If a mistake is made, developers can turn back the clock and compare earlier versions of the code to help fix the mistake while minimizing disruption to all team members.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Different Version Control Systems
+- Explanation:
+  - There are several version control systems available, each with its own set of features and capabilities. Some of the most common ones include Git, SVN (Subversion), and Mercurial.
+
+- Key Concepts:
+  - Think of different version control systems like different brands of cars. They all help you get from point A to point B, but they might have different features, look different, and you might operate them slightly differently.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 2. Introduction to Git
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Definition and History of Git
+- Explanation:
+  - Git is a distributed version control system, which means that every user has a complete copy of the project repository on their local machine. It was initially designed and developed by Linus Torvalds for Linux kernel development in 2005.
+- Key Concepts:
+  - Git is like a magical diary for your computer projects. Every time you write a new part of your computer story (code), Git makes a special note of it. If later you don’t like a part of the story, Git can help you go back to how the story was before.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Basic Concepts of Git
+- Explanation:
+  - The basic concepts of Git include: Repositories, Branches, Commits, and Tags. Understanding these is fundamental for using Git effectively.
+- Key Concepts:
+  - Repository (Repo): It’s like a big box where you keep all your toys (your code).
+  - Branch: It’s like having a copy of your box of toys, where you can play differently without messing up your original box.
+  - Commit: Every time you play with your toys (change your code), you can take a picture to remember how they were.
+  - Tag: You can give a special sticker to a particular moment of your playtime, so you can quickly find it later.
+</div>
+
+<aside class="notes"><ul>
+<li>GitHub <a href="https://github.com/SeleniumHQ/selenium">Selenium: A browser automation framework and ecosystem</a>.</li>
+</ul>
+</aside></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Exercise
+  - Follow the instructions to install Git on your laptop and initialize a new repository.
+</div></script></section></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Configuration and Aliases ⚙️
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Purpose
+
+To explain the different levels of Git configuration (system, global, and local) and how to manage configuration settings at each level.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 1. Git Configuration Levels
+
+- Explanation
+    - Git configuration settings can be managed at three levels: system-wide, user-specific (global), and repository-specific (local). Understanding these levels helps in configuring Git behavior according to specific needs.
+- Key Concepts
+    - Configuration Levels Imagine you have three boxes of crayons: one for the whole family, one just for you, and one for a specific coloring book. Each box has different colors suitable for its purpose. Similarly, Git has different configuration levels to tailor its behavior for different scenarios.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Exercises and Solutions
+
+```bash
+# Viewing configuration settings
+git config --list
+
+# Setting a global configuration value
+git config --global user.name "Your Name"
+
+# Reading a global configuration value
+git config --global user.name
+
+# Setting a local configuration value
+git config user.email "your.email@example.com"
+
+# Reading a configuration value
+git config user.email
+```
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 2. Creating Aliases
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Purpose
+To simplify and streamline Git commands through the creation of aliases.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Explain Like I'm Five
+- Explanation:
+    - Aliases in Git are shorthand commands that map to a longer command sequence. They can simplify complex commands, reduce typing, and make the Git command-line experience more efficient.
+- Key Concepts:
+    - Aliases: Imagine if instead of saying “please pass the salt”, you could just say “salt please” and everyone still understood. Aliases are like shorter ways to say or do things in Git.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Code Exercises and Solutions
+
+```bash
+# Creating an alias
+git config --global alias.co checkout
+# Now you can use `git co` instead of `git checkout`
+git co <branch-name>
+
+# Alias to add all changes and commit with message in one command
+# Usage: git acommit "your commit message"
+git config --global alias.acommit '!git add -A && git commit -m'
+
+# Shortened status command showing changes concisely
+git config --global alias.st "status --short"
+
+# Compact log view with branch graph
+git config --global alias.lg "log --oneline --graph --decorate --all"
+
+# Detailed colored log with author and timestamp
+git config --global alias.flog "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+
+# Simplified colored log with author name
+git config --global alias.slog "log --graph --pretty='format:%C(red)%d%C(reset) %C(yellow)%h%C(reset) %ar %C(green)%aN%C(reset) %s'"
+```
+</div></script></section></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Resources 📚
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Tips and Tricks
+
+A handy cheat sheet with essential and frequently used Git commands for quick reference:
+
+<img src="https://raw.githubusercontent.com/oswwwaldotc/introduction-to-git/refs/heads/main/images/cheat_sheet.png" alt="Git Cheat Sheet|1080" style="width: 1080px; object-fit: fill">
+
+
+- [GitHub Git Cheat Sheet (PDF)](https://education.github.com/git-cheat-sheet-education.pdf)
+- [GitLab Git Cheat Sheet (PDF)](https://about.gitlab.com/images/press/git-cheat-sheet.pdf)
+- [Bitbucket Git Cheat Sheet](https://www.atlassian.com/git/tutorials/atlassian-git-cheatsheet)
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Self-Learning
+
+Expand your knowledge with these helpful resources:
+- [What is Git? A Beginner's Guide to Git Version Control](https://www.freecodecamp.org/news/what-is-git-learn-git-version-control/) — Introductory article
+- [Learning Git Branching](https://learngitbranching.js.org/) — Interactive, intermediate-level tutorial
+- [Git & GitHub Playlist (Spanish)](https://youtube.com/playlist?list=PLTd5ehIj0goMCnj6V5NdzSIHBgrIXckGU) — Video series
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Personalize Your README
+
+- [Emoji Cheat Sheet](https://github.com/ikatyang/emoji-cheat-sheet) — Add expressive emojis to your markdown
+- [Shields and Badges](https://github.com/badges/shields) — Create custom badges for your projects
+- [GitHub Awesome List](https://github.com/tiimgreen/github-cheat-sheet) — Curated GitHub tips and tricks
+- [.gitignore Templates](https://github.com/github/gitignore) — Ready-to-use .gitignore files for various languages and tools
+</div></script></section></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Git Strategy 🛠️
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Purpose
+To establish a robust branching strategy in Git to ensure a streamlined and efficient workflow that facilitates collaboration, feature development, bug fixing, and release management.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Considerations
+- Branch Naming Conventions: Establish a clear and consistent naming convention for branches to ensure they are easily identifiable and relate to their purpose (e.g., feature/, bugfix/, release/).
+- Pull Requests/Merge Requests: Utilize pull requests or merge requests for code review, discussion, and approval before merging changes into main branches.
+- Access Control: Set up appropriate access controls to restrict who can merge into critical branches such as the main or release branches.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 1. Feature Branch Workflow
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Flowchart
+
+
+<div class="mermaid">
+graph TD;
+    A[Start] --> B[Create Feature Branch from Main]
+    B --> C[Develop and Test Feature]
+    C --> D[Create Pull Request]
+    D --> E{Review Approved?}
+    E -->|Yes| F[Merge to Main]
+    E -->|No| C
+    F --> G[Delete Feature Branch]
+    G --> H[End]
+
+</div>
+</div>
+
+<aside class="notes"><p>The Feature Branch Workflow is centered around the principle of creating isolated branches for feature development. When a developer is tasked with creating a new feature or fixing a bug, they create a new branch off the main branch. This branch is referred to as a feature branch. All the development work related to that feature is done in this branch, keeping the main branch unaffected. Once the feature development is completed and tested, a Pull Request (PR) is created for code review. If the PR is approved, the feature branch is merged back into the main branch and then deleted to maintain a clean repository.</p>
+</aside></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Team Usage
+In a team setting, the Feature Branch Workflow enables a clean and organized method of introducing new features or fixes. Each developer works on their assigned tasks in isolated branches, ensuring that the main branch always has a stable, deployable version of the project. The process of code review before merging helps in maintaining code quality and sharing knowledge among the team.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 2. Gitflow Workflow
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Flowchart
+
+<div class="mermaid">
+graph TD;
+    A[Start] --> B[Create Feature Branch from Develop]
+    B --> C[Develop and Test Feature]
+    C --> D[Merge to Develop]
+    D --> E{Release Ready?}
+    E -->|Yes| F[Create Release Branch from Develop]
+    E -->|No| B
+    F --> G[Prepare Release]
+    G --> H[Merge to Main and Tag Release]
+    H --> I[Merge to Develop]
+    I --> J[Delete Release Branch]
+    J --> K[End]
+
+</div>
+</div>
+
+<aside class="notes"><p>The Gitflow Workflow establishes a structured approach to projects by defining different branches for features, releases, and hotfixes. The workflow uses two primary branches: <code>main</code> for storing the official project history, and <code>develop</code> as an integration branch for features. Feature branches are created off the <code>develop</code> branch and merged back into it once the feature is completed. When the team is ready for a release, a release branch is created off <code>develop</code>, and once the release is finalized, it&#39;s merged into <code>main</code> and <code>develop</code>, then tagged with a version number.</p>
+</aside></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Team Usage
+This workflow is suitable for larger teams and projects where there are regular releases and a need for parallel development on multiple features. It provides clear paths for feature development, releases, and maintenance, ensuring that there's a structured approach to deploying and maintaining the project.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 3. GitHub Flow
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Flowchart
+
+<div class="mermaid">
+graph TD;
+    A[Start] --> B[Create Branch from Main]
+    B --> C[Develop, Test, and Deploy]
+    C --> D[Create Pull Request]
+    D --> E{Review Approved?}
+    E -->|Yes| F[Merge to Main]
+    E -->|No| C
+    F --> G[Deploy Main]
+    G --> H[End]
+
+</div>
+</div>
+
+<aside class="notes"><p>GitHub Flow is a streamlined workflow that emphasizes continuous delivery principles. Developers create a new branch from the main branch, work on their changes, and open a Pull Request (PR) for review. While the PR is under review, it can be deployed to a staging environment for testing. Once the PR is approved, it&#39;s merged back into the main branch, which is then deployed to production.</p>
+</aside></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Team Usage
+GitHub Flow encourages a culture of continuous delivery, where developers are integrating their code into the main branch frequently. It's a straightforward workflow that encourages continuous feedback, and is suitable for teams that want to deploy often and get quick feedback on their changes.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 4. GitLab Flow
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Flowchart
+
+<div class="mermaid">
+graph TD;
+    A[Start] --> B[Create Feature Branch from Main]
+    B --> C[Develop and Test Feature]
+    C --> D[Create Pull Request for Environment Branch]
+    D --> E[Merge to Environment Branch]
+    E --> F[Test in Environment]
+    F --> G{Passes Tests?}
+    G -->|Yes| H[Merge to Main]
+    G -->|No| C
+    H --> I[Deploy Main]
+    I --> J[End]
+
+</div>
+</div>
+
+<aside class="notes"><p>GitLab Flow is a flexible workflow that extends the ideas of GitHub Flow by introducing environment branches in addition to the main branch. Developers work on feature branches created from the main branch. Once ready for testing in a specific environment, they create a Pull Request to an environment branch (e.g., staging or pre-production). After thorough testing and any necessary iterations, the changes are merged into the main branch and deployed to production.</p>
+</aside></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Team Usage
+This workflow is suited for teams that have multiple environments for testing and validation before releasing to production. It provides a structured approach to manage and promote code across various environments while maintaining a clean and deployable main branch.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 5. Monorepo Workflow
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Flowchart
+
+<div class="mermaid">
+graph TD;
+    A[Start] --> B[Pull Latest Main]
+    B --> C[Develop and Test Changes]
+    C --> D[Create Pull Request]
+    D --> E{Review Approved?}
+    E -->|Yes| F[Merge to Main]
+    E -->|No| C
+    F --> G[Deploy Affected Services]
+    G --> H[End]
+
+</div>
+</div>
+
+<aside class="notes"><p>The Monorepo Workflow is designed for teams managing multiple interdependent projects within a single Git repository. Instead of splitting each service or library into its own repo, all projects live in one centralized codebase. Developers begin by pulling the latest <code>main</code> branch to ensure their local environment is in sync. They then make isolated changes to the relevant parts of the codebase. After development and internal testing, they open a Pull Request for review.</p>
+<p>Once approved, the changes are merged into the <code>main</code> branch. At this point, automated tooling (like CI/CD pipelines) identifies which projects were affected by the changes and triggers builds or deployments only for those components. This allows teams to develop and deploy modular code efficiently while benefiting from shared tooling and unified version control.</p>
+</aside></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Team Usage
+
+This strategy is highly effective for large teams working on interconnected services—such as frontend, backend, and shared libraries—who want to reduce the overhead of managing multiple repositories. The workflow encourages collaboration and visibility, supports atomic commits across projects, and simplifies dependency management. However, it requires strong discipline around folder structures, commit scoping, and automated tooling to remain scalable.
+</div></script></section></section></div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+	<script src="plugin/mermaid/mermaid.js"></script>
+	<script src="plugin/chart/chart.min.js"></script>
+	<script src="plugin/chart/plugin.js"></script>
+	<script src="plugin/menu/menu.js"></script>
+	<script src="plugin/customcontrols/plugin.js"></script>
+	<script src="plugin/chalkboard/plugin.js"></script>
+	<script src="plugin/reveal-pointer/pointer.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+		  RevealMenu,
+	      RevealPointer,
+		  RevealChalkboard, 
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: 'plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+				{ icon: '<i class="fa fa-pen-square"></i>',
+				title: 'Toggle chalkboard (B)',
+				action: 'RevealChalkboard.toggleChalkboard();'
+				},
+				{ icon: '<i class="fa fa-pen"></i>',
+				title: 'Toggle notes canvas (C)',
+				action: 'RevealChalkboard.toggleNotesCanvas();'
+				},
+			]
+		},
+		menu: {
+			loadIcons: false
+		}
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":1920,"height":1080,"margin":0,"controls":true,"progress":true,"slideNumber":false,"transition":"fade","transitionSpeed":"normal"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>
