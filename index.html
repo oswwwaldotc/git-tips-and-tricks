@@ -239,11 +239,198 @@ git config --global alias.slog "log --graph --pretty='format:%C(red)%d%C(reset) 
 </div></script></section></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
+## Getting Started 🚀
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Fundamentals of Git
+
+The main aim of this section is to introduce attendees to the basic operations and commands in Git, enabling them to create and clone repositories, make changes, and track those changes efficiently.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 1. Creating Repositories
+
+- Explanation:
+  - A repository (or "repo") is a digital directory or storage space where you can access your project, its files, and all the versions of its files that Git saves.
+- Key Concepts:
+  - Repository: Imagine a big box where you can keep all your drawings. Each time you make a new drawing or change an old one, you put it in the box. A repository is like this box for all the code files in a project.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Code Exercises and Solutions:
+```bash
+# To create a new repository:
+git init [repository_name]
+  
+# Example:
+git init my_first_repo
+```
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 2. Cloning Repositories
+
+- Explanation:
+  - Cloning a repository means making a copy of a repo from an existing URL onto your local machine, allowing you to work on a project without affecting the original source.
+- Key Concepts:
+  - Clone: Imagine your friend has a cool box of drawings. Cloning is like making an exact copy of your friend’s box, so now you have all the same drawings to color and change as you like!
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Code Exercises and Solutions:
+```bash
+# To clone a repository:
+git clone [url]
+
+# Example:
+git clone https://github.com/username/repo_name.git
+```
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 3. Making Changes
+- Explanation:
+  - Making changes in a Git repository involves editing files, saving them, and then committing those changes so that Git tracks them.
+- Key Concepts:
+  - Commit: Every time you change a drawing, you can take a picture of it and write a little note about what you changed. That's like making a commit in Git.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Code Exercises and Solutions:
+```bash
+# To stage changes for a commit:
+git add .
+  
+# To commit the staged changes:
+ git commit -m "Description of changes made"
+  
+# Example:
+git add .
+git commit -m "Added a new file called index.html"
+```
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 4. Tracking Changes
+- Explanation:
+  - Tracking changes in Git allows you to see what has been altered, who made the changes, and when they were made. This is essential for understanding the evolution of a project.
+- Key Concepts:
+  - Log: Imagine having a diary that writes itself every time you change a drawing, telling you what you changed, when, and why. That’s what Git does with the `git log` command.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Code Exercises and Solutions:
+```bash
+# To view the commit history:
+git log
+  
+# Example output:
+commit fa26be1fbae40776ae4d3e04db0ca5bfe3beccea (HEAD -> main)
+Author: Your Name <you@example.com>
+Date:   Tue Oct 12 14:32:35 2023 -0700
+    Added a new file called index.html
+```
+</div></script></section></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Git Internals 🛠️
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Purpose
+To understand the fundamental building blocks of Git - the objects: blobs, trees, commits, and tags, which form the backbone of the version control system.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 1. Git Objects
+
+- Explanation:
+    - Git is built around a few basic objects which are stored in a simple key-value data store. These objects include blobs (file data), trees (directory structures), commits (individual changesets), and tags (reference points in history).
+- Key Concepts:
+    - Git Objects: Imagine Git as a big toy box. Blobs are like the individual toys, trees are the shelves or sections where toys are kept, commits are like snapshots of how the toy box looked at a certain time, and tags are special stickers to remember specific arrangements of the toys.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Code Exercises and Solutions:
+```bash
+# Exploring Git objects
+# Find the hash of the latest commit
+git log -n 1 --pretty=format:"%H"
+
+# Explore the commit object
+git cat-file -p <commit-hash>
+```
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 2. The Object Database
+
+- Explanation:
+    - The object database is where Git stores all the objects representing the project history. It's stored in the `.git/objects` directory and is crucial for the integrity and functionality of the repository.
+- Key Concepts:
+    - Object Database: It’s like a magic cupboard where Git keeps all its toys (objects) safely. Each toy has a special spot, so Git can quickly find it when needed.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Code Exercises and Solutions:
+```bash
+# (Unix) List the objects in the object database
+find .git/objects -type f
+# (PowerShell) Windows OS
+Get-ChildItem -Path .git\objects -File -Recurse
+```
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 3. Git Index
+
+- Explanation:
+    - The Git index is a staging area where changes are collected before being committed to the repository. It allows for fine-grained control over what gets included in a commit.
+- Key Concepts:
+    - Git Index: Imagine before putting away your toys, you have a special tray where you put the toys you want to put away first. The Git index is like this tray, helping decide what changes to save first.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Code Exercises and Solutions:
+```bash
+# Exploring the Git index
+# Viewing staged changes
+git status
+# Provides a much more concise output
+git status --short
+# Shows the branch and tracking information even when using the short format
+git status --branch
+```
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 4. Refs and Reflogs
+
+- Explanation:
+    - Refs are pointers to commits, and reflogs track when these refs change. They are crucial for branch management, tagging, and history navigation.
+- Key Concepts:
+    - Refs and Reflogs: Refs are like bookmarks in your adventure book, marking important pages, while reflogs are like a diary, noting when you moved the bookmarks.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Code Exercises and Solutions:
+```bash
+# Exploring refs and reflogs
+# Viewing all refs
+git show-ref
+
+# Viewing reflog
+git reflog
+```
+</div></script></section></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
 ## Resources 📚
 </div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-### Tips and Tricks
+### 1. Tips and Tricks
 
 A handy cheat sheet with essential and frequently used Git commands for quick reference:
 
@@ -256,7 +443,7 @@ A handy cheat sheet with essential and frequently used Git commands for quick re
 </div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-### Self-Learning
+### 2. Self-Learning
 
 Expand your knowledge with these helpful resources:
 - [What is Git? A Beginner's Guide to Git Version Control](https://www.freecodecamp.org/news/what-is-git-learn-git-version-control/) — Introductory article
@@ -265,7 +452,7 @@ Expand your knowledge with these helpful resources:
 </div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-### Personalize Your README
+### 3. Personalize Your README
 
 - [Emoji Cheat Sheet](https://github.com/ikatyang/emoji-cheat-sheet) — Add expressive emojis to your markdown
 - [Shields and Badges](https://github.com/badges/shields) — Create custom badges for your projects
@@ -274,7 +461,58 @@ Expand your knowledge with these helpful resources:
 </div></script></section></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
+## Platforms and Code Review 🤝
+
+To be done...
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Best practices for writing commits
+Writing good commit messages is important to make your project history readable, easily scannable and, of course, understandable by anyone involved in the project.
+
+<img src="https://imgs.xkcd.com/comics/git_commit_2x.png" alt="git_commit_2x.png|555" style="width: 555px; object-fit: fill">
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 1. Use the imperative verb
+
+It is best that the commit message completes this sentence: "If I apply this commit, then this commit..."
+- Add a new search feature
+- Fix a problem with the top bar
+- Change the default system color
+- Remove a random notification
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 2. Use a maximum of 50 characters for your commit message
+
+Be short and concise. If you have a lot to explain... Surely it is that your commit does too many things. 
+- git commit -m "Add new search feature"
+- git commit -m "Change typography to improve performance"
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 3. Use a prefix for your commits to make them more semantic
+
+When a project grows, there need to be certain rules in place to make the history readable.
+These would be the prefixes:
+- Docs: Changes in documentation.
+- Refactor: Refactoring code as variable or function name changes.
+- Test: Add tests or edit an existing one.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### References
+
+- [The Ultimate Guide to Writing Effective Commit Messages](https://skerritt.blog/writing-better-commit-messages/): Best Practices and Conventional Commits
+- [Buenas prácticas para escribir commits en Git](https://midu.dev/buenas-practicas-escribir-commits-git): midudev
+- [Estrategia de Git: Ship / Show / Ask](https://midu.dev/ship-show-ask-estrategia-git): midudev
+</div></script></section></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
 ## Git Strategy 🛠️
+
+To be done...
 </div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
