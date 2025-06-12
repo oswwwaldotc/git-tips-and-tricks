@@ -212,7 +212,7 @@ To simplify and streamline Git commands through the creation of aliases.
 </div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-#### Code Exercises and Solutions
+#### Exercises and Solutions
 
 ```bash
 # Creating an alias
@@ -258,7 +258,7 @@ The main aim of this section is to introduce attendees to the basic operations a
 </div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-#### Code Exercises and Solutions:
+#### Exercises and Solutions:
 ```bash
 # To create a new repository:
 git init [repository_name]
@@ -278,7 +278,7 @@ git init my_first_repo
 </div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-#### Code Exercises and Solutions:
+#### Exercises and Solutions:
 ```bash
 # To clone a repository:
 git clone [url]
@@ -297,7 +297,7 @@ git clone https://github.com/username/repo_name.git
 </div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-#### Code Exercises and Solutions:
+#### Exercises and Solutions:
 ```bash
 # To stage changes for a commit:
 git add .
@@ -320,7 +320,7 @@ git commit -m "Added a new file called index.html"
 </div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-#### Code Exercises and Solutions:
+#### Exercises and Solutions:
 ```bash
 # To view the commit history:
 git log
@@ -331,6 +331,12 @@ Author: Your Name <you@example.com>
 Date:   Tue Oct 12 14:32:35 2023 -0700
     Added a new file called index.html
 ```
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Staging Area
+
+<img src="https://git-scm.com/images/about/index1@2x.png" alt="staging-area" style="object-fit: scale-down">
 </div></script></section></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -352,7 +358,7 @@ To understand the fundamental building blocks of Git - the objects: blobs, trees
 </div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-#### Code Exercises and Solutions:
+#### Exercises and Solutions:
 ```bash
 # Exploring Git objects
 # Find the hash of the latest commit
@@ -373,7 +379,7 @@ git cat-file -p <commit-hash>
 </div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-#### Code Exercises and Solutions:
+#### Exercises and Solutions:
 ```bash
 # (Unix) List the objects in the object database
 find .git/objects -type f
@@ -392,7 +398,7 @@ Get-ChildItem -Path .git\objects -File -Recurse
 </div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-#### Code Exercises and Solutions:
+#### Exercises and Solutions:
 ```bash
 # Exploring the Git index
 # Viewing staged changes
@@ -414,7 +420,7 @@ git status --branch
 </div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-#### Code Exercises and Solutions:
+#### Exercises and Solutions:
 ```bash
 # Exploring refs and reflogs
 # Viewing all refs
@@ -423,6 +429,195 @@ git show-ref
 # Viewing reflog
 git reflog
 ```
+</div></script></section></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Branching and Merging 🌲
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Purpose
+The primary purpose of this section is to introduce the concepts of branching and merging, which are fundamental to managing different versions of code within the same repository.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 1. Creating Branches
+
+- Explanation:
+  - Branching is a core concept in Git. When you create a branch in your project, you're creating an environment where you can try out new ideas separately from the main (or master) branch where your project's stable version lives.
+- Key Concepts:
+  - Branch: Imagine you're writing a story and you come to a point where the hero can take a boat or a plane. You decide to write both scenarios without messing up the original story. Creating a branch is like starting a new copy of the story where the hero takes the boat, while the original story remains unchanged.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Exercises and Solutions
+```bash
+# To create a new branch:
+git branch [branch_name]
+
+# Example:
+git branch my_feature_branch
+```
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 2. Switching between Branches
+
+- Explanation:
+  - Switching between branches changes your working directory to the snapshot of the project saved in that branch, allowing you to seamlessly switch between different lines of development.
+- Key Concepts:
+  - Switching Branches: Imagine you have two storybooks: one where the hero took the boat, and the other where the hero took the plane. Switching branches is like putting down one book and picking up the other to read.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Exercises and Solutions
+```bash
+# To switch to an existing branch:
+git checkout [branch_name]
+
+# Example:
+git checkout my_feature_branch
+```
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 3. Merging Branches
+
+- Explanation:
+  - Merging is the act of integrating changes from one branch into another. This is how you combine the different lines of development you've been working on.
+- Key Concepts:
+  - Merge: Once you like the new part of the story where the hero took the boat, you decide to add it to your original story. Merging is like pasting the new boat adventure pages into your original storybook.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Exercises and Solutions
+```bash
+# To merge another branch into your current branch:
+git merge [branch_name]
+
+# Example:
+git merge my_feature_branch
+```
+</div></script></section></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Resolving Merge Conflicts 🔧
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Purpose
+The main objective of this section is to educate attendees on what merge conflicts are, why they occur, and how to resolve them to maintain a smooth development workflow.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 1. Understanding Merge Conflicts
+
+- Explanation:
+  - Merge conflicts happen when two branches have changes in the same part of the file and Git can’t figure out which changes to keep. This usually occurs when merging branches or rebasing.
+- Key Concepts:
+  - Merge Conflict: Imagine you and your friend have a shared box of crayons. You both take the box home on different days, and each of you adds a new crayon. When you both come back with your crayons, you realize they don't fit because they are too many. A merge conflict is like figuring out which crayons to keep so they all fit nicely in the box.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 2. Resolving Merge Conflicts
+
+- Explanation:
+  - Resolving a merge conflict involves deciding which changes to keep. Git will mark the parts of the file that have conflicts, and then it's up to you to resolve those conflicts manually.
+- Key Concepts:
+  - Resolving a merge conflict is like looking at the crayons that don’t fit and deciding which ones to keep, which ones to take out, and maybe even deciding to get a bigger box.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Exercises and Solutions
+```bash
+# Git will mark the conflicting areas in the file. Here's how a conflict might look:
+<-<<<<<-< HEAD
+This is your change
+=======
+This is the change in the other branch
+>->>>>>-> branch_name
+
+# To resolve the conflict, you'd edit the file to fix the conflicting areas, then add and commit the file:
+git add [file_with_conflict]
+git commit -m "Resolved merge conflict by keeping/merging..."
+
+# Example:
+git add conflict_file.txt
+git commit -m "Resolved merge conflict by keeping my change"
+```
+</div></script></section></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Tagging 🏷️
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 1. Introduction to Tagging
+
+- Explanation:
+    - Tags in Git are references to specific points in your project history. They are typically used to mark release points (v1.0, v2.0, etc.).
+- Key Concepts:
+    - Imagine you have a photo album. Tagging is like putting a special sticker on some photos to remember important events like birthdays or vacations.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Exercises and Solutions
+
+```bash
+# Creating a lightweight tag
+git tag v1.0
+```
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 2. Lightweight vs Annotated Tags
+
+- Explanation:
+    - Lightweight tags are simply pointers to specific commits. Annotated tags are stored as full objects in the Git database, containing a tagging message, name of the tagger, and date.
+- Key Concepts:
+    - Lightweight tags are like simple bookmarks in your book, while annotated tags are like bookmarks with notes written on them, telling you why that page is important.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Exercises and Solutions
+
+```bash
+# Creating an annotated tag
+git tag -a v1.0 -m "Release version 1.0 with refactors and new features"
+```
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 3. Tagging Workflow
+
+- Explanation:
+    - Tagging workflows help in structuring your project's release cycle and making it easy to switch between different release points.
+- Key Concepts:
+    - Imagine your toy box has different sections for toys from different years. Tagging workflow is like having a map that helps you quickly find toys from a specific year.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Exercises and Solutions
+```bash
+# Listing tags
+git tag
+
+# Showing tag data
+git show v1.0
+```
+</div></script></section></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Remote Repositories and Collaboration 🌐
+
+To be done...
+Review (Platforms and Code Review 🤝)
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Workflow
+
+<img src="https://raw.githubusercontent.com/oswwwaldotc/introduction-to-git/refs/heads/main/images/git-workflow.png" alt="git-workflow" style="object-fit: scale-down">
 </div></script></section></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -470,7 +665,7 @@ To be done...
 ### Best practices for writing commits
 Writing good commit messages is important to make your project history readable, easily scannable and, of course, understandable by anyone involved in the project.
 
-<img src="https://imgs.xkcd.com/comics/git_commit_2x.png" alt="git_commit_2x.png|555" style="width: 555px; object-fit: fill">
+<img src="https://imgs.xkcd.com/comics/git_commit_2x.png" alt="git_commit_2x.png" style="object-fit: scale-down">
 </div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
