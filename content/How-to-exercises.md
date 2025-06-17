@@ -489,3 +489,220 @@ git describe milestone-1
 ```
 
 ---
+
+# 🟣 Git Diff — Hands-on Exercise
+
+---
+
+## 🎯 **Purpose**
+
+To enable you to:
+
+* View differences between files
+* Compare different commits, branches, or the working directory
+* Use `git diff` to aid code reviews, bug fixes, or understanding code evolution
+
+---
+
+## 🔹 **Step 0 — Set up a repository**:
+
+```bash
+mkdir git-diff-exercise
+cd git-diff-exercise
+git init
+```
+
+---
+
+## 🔹 **Step 1 —Create Initial File and Commit**:
+
+```bash
+echo "Hello, world!" > main.txt
+git add main.txt
+git commit -m "Initial commit with main.txt"
+```
+
+---
+
+## 🔹 **Step 2 —Make Some Local Changes (but don't commit)**:
+
+```bash
+echo "This is a new line" >> main.txt
+```
+
+---
+
+## 🔹 **Step 3 —View Unstaged Changes with `git diff`**:
+
+```bash
+git diff
+```
+
+✅ This shows differences **between the working directory and the last commit**.
+
+---
+
+## 🔹 **Step 4 —Add and View Staged Changes**:
+
+```bash
+git add main.txt
+git diff --cached
+```
+
+✅ Now we see **the differences that are staged** for commit.
+
+---
+
+## 🔹 **Step 5 —Create a Second Commitment**:
+
+```bash
+git commit -m "Add new line to main.txt"
+
+# Change again for comparison
+echo "Another change" >> main.txt
+git add main.txt
+git commit -m "Add another change to main.txt"
+```
+
+---
+
+## 🔹 **Step 6 —Compare Between Commits**:
+
+```bash
+git diff HEAD~1 HEAD
+```
+
+✅ This shows differences **between the last two commits**.
+
+---
+
+## 🔹 **Step 7 —Compare Between Branches (Optionally)**:
+
+```bash
+git checkout -b new-feature
+echo "Some new code" >> main.txt
+git add main.txt
+git commit -m "Add new code"
+
+git checkout main
+git diff main new-feature
+```
+
+---
+
+# 📦 Git Stash — Hands-on Exercise
+
+---
+
+## 🎯 **Purpose**
+
+To enable you to:
+
+* Stash your uncommitted changes temporarily
+* Apply or discard those stashed snapshots
+* Combine stashed code with branching, tags, and remote operations
+* Perform proper clean-up afterwards (delete stashed items, tags, or even remote references)
+
+---
+
+## 🔹 **Step 0 — Set up repository**:
+
+```bash
+mkdir git-stash-exercise
+cd git-stash-exercise
+git init
+```
+
+---
+
+## 🔹 **Step 1 — Create Initial File and Commit**:
+
+```bash
+echo "Initial content" > main.txt
+git add main.txt
+git commit -m "Initial commit"
+```
+
+---
+
+## 🔹 **Step 2 — Create a Branch and Make Some Changes**:
+
+```bash
+git checkout -b feature-stash
+echo "Some new code" >> main.txt
+# Do not commit this yet
+```
+
+---
+
+## 🔹 **Step 3 — Stash Your Changes**:
+
+```bash
+git stash  # stashed but not committed
+```
+
+✅ Your working directory is now clean.
+
+---
+
+## 🔹 **Step 4 — Apply Stashed Changes Later**:
+
+```bash
+git stash list
+git stash apply stash@{0}
+# This applies the most recent stash
+git add main.txt
+git commit -m "Recovered stashed code"
+```
+
+---
+
+## 🔹 **Step 5 — Stash Multiple Times (Optionally)**:
+
+```bash
+# make another change
+echo "Additional fixes" >> main.txt
+
+git stash  # create another stash
+git stash list  # see all stashed snapshots
+```
+
+---
+
+## 🔹 **Step 6 — Apply or Pop Stashed Change**:
+
+```bash
+git stash pop  # applies and drops the most recent stash
+# or
+git stash apply stash@{1}  # applies a specific stash without removing it
+```
+
+---
+
+## 🔹 **Step 7 — Delete Stashed Change**:
+
+```bash
+git stash drop stash@{1}
+# or
+git stash clear
+```
+
+---
+
+## 🔹 **Step 8 — (Optionally) Push Branch or Tag and Then Delete**:
+
+```bash
+# Push your new branch to a remote repository
+git remote add origin <your-repo-url>
+git push origin feature-stash
+
+# Create a tag for a new release
+git tag v1.0
+git push origin v1.0
+
+# Later, delete the remote branch
+git push origin --delete feature-stash
+
+# And delete the tag remotely if needed
+git push origin :v1.0
+```
