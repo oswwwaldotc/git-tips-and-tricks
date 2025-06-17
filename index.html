@@ -608,16 +608,511 @@ git show v1.0
 </div></script></section></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-## Remote Repositories and Collaboration 🌐
+## Working with Remotes 📡
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-To be done...
-Review (Platforms and Code Review 🤝)
+### Purpose
+
+To understand the concept of remote repositories and how they facilitate collaboration and version control in a distributed environment.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 1. Introduction to Remote Repositories
+
+- Explanation:
+    - Remote repositories are versions of your project that are hosted on the internet or network somewhere. They allow multiple people to collaborate on the same project from different locations.
+- Key Concepts:
+    - Remote Repository: Imagine if you and your friends had a magic drawing board. Even if your friends are at their own homes, when they draw something on their magic board, you can see it on yours too!
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Exercises and Solutions
+```bash
+# Adding a remote repository
+git remote add origin <repository-url>
+
+# Example:
+git remote add origin https://github.com/user/repo.git
+```
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 2. Remote Branches
+
+- Explanation:
+    - Remote branches reflect the state of branches on your remote repositories. They are pointers to the commits that have been submitted to the remote repositories.
+- Key Concepts:
+    - Remote Branches: It's like having a magic mirror that shows you what your friends have drawn on their magic drawing board, even when they are far away.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Exercises and Solutions
+```bash
+# Fetching remote branches
+git fetch origin
+
+# Checking out a remote branch
+git checkout -b <branch-name> origin/<branch-name>
+
+# Example:
+git checkout -b feature origin/feature
+```
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 3. Fetching and Pruning
+
+- Explanation:
+    - Fetching downloads objects and refs from another repository, which is essential to stay updated with the changes made by other collaborators. Pruning removes references to deleted branches on the remote repository.
+- Key Concepts:
+    - Fetching and Pruning: Imagine your magic drawing board gets new drawings from your friends automatically, but sometimes, if a friend erases a drawing, you need to clean that space on your board too.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Exercises and Solutions
+```bash
+# Fetching from a remote repository
+git fetch origin
+
+# Pruning deleted references
+git remote prune origin
+```
+</div></script></section></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Collaboration in Remotes 🌐
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Working with Remote Repositories
+
+The objective of this section is to introduce attendees to remote repositories and how they serve as a hub for collaboration, enabling multiple developers to work on a project simultaneously.
 </div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ### Workflow
 
 <img src="https://raw.githubusercontent.com/oswwwaldotc/introduction-to-git/refs/heads/main/images/git-workflow.png" alt="git-workflow" style="object-fit: scale-down">
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 1. Pushing to Remote Repositories
+
+- Explanation:
+  - Pushing is the act of uploading your local repository content to a remote repository. This allows others to see and access your changes.
+- Key Concepts:
+  - Push: Imagine you made a beautiful drawing at home and you want to bring it to school to show your friends. Pushing is like taking your drawing from home and putting it up on the classroom wall for everyone to see.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Exercises and Solutions
+```bash
+# To push changes to a remote repository:
+git push [remote_name] [branch_name]
+
+# Example:
+git push origin main
+```
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 2. Pulling from Remote Repositories
+
+- Explanation:
+  - Pulling is the act of fetching and downloading content from a remote repository and immediately updating the local repository to match that content.
+- Key Concepts:
+  - Pull: Imagine your friend added a cool sticker to the drawing on the classroom wall while you were away. Pulling is like taking a picture of the updated drawing to have the latest version with the cool sticker on your own phone.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Exercises and Solutions
+```bash
+# To pull changes from a remote repository:
+git pull [remote_name] [branch_name]
+
+# Example:
+git pull origin main
+```
+</div></script></section></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Undoing Changes ↩️
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 1. Reverting Commits
+
+- Explanation:
+    - The `git revert` command creates a new commit that undoes the changes made by a previous commit. This is a safe way to undo changes without rewriting the project history.
+- Key Concepts:
+    - Revert: Imagine you added a sticker to your drawing, but then you decided you don’t like it. Reverting is like putting a white sticker over it to cover it up, instead of erasing it.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Exercises and Solutions
+```bash
+# Reverting a specific commit
+git revert <commit-hash>
+
+# Example:
+git revert abc123
+```
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 2. Resetting the HEAD
+
+- Explanation:
+    - The `git reset` command allows you to reset the HEAD to a specific commit, which effectively discards all the commits after the specified commit.
+- Key Concepts:
+    - Reset: Imagine you built a tower of blocks, but you don’t like the last few layers you added. Reset is like taking off those layers to go back to the point you liked.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Exercises and Solutions
+
+```bash
+# Resetting to a specific commit
+git reset <commit-hash>
+
+# Example:
+git reset abc123
+```
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 3. Cleaning the Working Directory
+
+- Explanation:
+    - The `git clean` command is used to clean the working directory in git by removing files that are not under version control.
+- Key Concepts:
+    - Clean: Imagine your room is filled with old toys and drawings you don’t need anymore. Cleaning is like picking up all those things and putting them in the trash so you have space to play.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Exercises and Solutions
+```bash
+# Cleaning the working directory
+git clean -n  # This will do a dry-run to show what will be deleted
+git clean -f  # This will delete the untracked files
+
+# Example:
+git clean -f
+```
+</div></script></section></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Code Review 🧪
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 1. Utilizing Pull Requests and Merge Requests
+
+- Explanation:
+    - Pull Requests (PRs) and Merge Requests (MRs) are mechanisms for proposing changes to a codebase. They allow for code review, discussion, and modifications before the changes are merged into the project.
+- Key Concepts:
+    - Pull Requests and Merge Requests: Imagine you've made a cool drawing and want to add it to the big family album. You show it to your family first, they give suggestions, maybe you add a few more colors, and then it gets added to the album.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Exercises and Solutions
+```bash
+# Creating a new branch for your changes
+git checkout -b feature/new-feature
+
+# Pushing the branch to the remote repository
+git push origin feature/new-feature
+
+# Now you can create a Pull Request or Merge Request on the collaboration platform
+```
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 2. Best practices for writing commits
+Writing good commit messages is important to make your project history readable, easily scannable and, of course, understandable by anyone involved in the project.
+
+<img src="https://imgs.xkcd.com/comics/git_commit_2x.png" alt="git_commit_2x.png" style="object-fit: scale-down">
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 2.1 Use the imperative verb
+
+It is best that the commit message completes this sentence: "If I apply this commit, then this commit..."
+- Add a new search feature
+- Fix a problem with the top bar
+- Change the default system color
+- Remove a random notification
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 2.2 Use a maximum of 50 characters for your commit message
+
+Be short and concise. If you have a lot to explain... Surely it is that your commit does too many things. 
+- git commit -m "Add new search feature"
+- git commit -m "Change typography to improve performance"
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 2.3 Use a prefix for your commits to make them more semantic
+
+When a project grows, there need to be certain rules in place to make the history readable.
+These would be the prefixes:
+- Docs: Changes in documentation.
+- Refactor: Refactoring code as variable or function name changes.
+- Test: Add tests or edit an existing one.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### References
+
+- [The Ultimate Guide to Writing Effective Commit Messages](https://skerritt.blog/writing-better-commit-messages/): Best Practices and Conventional Commits
+- [Buenas prácticas para escribir commits en Git](https://midu.dev/buenas-practicas-escribir-commits-git): midudev
+- [Estrategia de Git: Ship / Show / Ask](https://midu.dev/ship-show-ask-estrategia-git): midudev
+</div></script></section></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Git Strategy 🛠️
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Purpose
+To establish a robust branching strategy in Git to ensure a streamlined and efficient workflow that facilitates collaboration, feature development, bug fixing, and release management.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 1. Feature Branch Workflow
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Flowchart
+
+
+<div class="mermaid">
+gitGraph
+    commit id: "INIT"
+    branch feature
+    checkout feature
+    commit id: "WORK"
+    checkout main
+    merge feature id: "PR_MERGE"
+
+</div>
+</div>
+
+<aside class="notes"><p>The Feature Branch Workflow is centered around the principle of creating isolated branches for feature development. When a developer is tasked with creating a new feature or fixing a bug, they create a new branch off the main branch. This branch is referred to as a feature branch. All the development work related to that feature is done in this branch, keeping the main branch unaffected. Once the feature development is completed and tested, a Pull Request (PR) is created for code review. If the PR is approved, the feature branch is merged back into the main branch and then deleted to maintain a clean repository.</p>
+</aside></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 2. Gitflow Workflow
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Flowchart
+
+<div class="mermaid">
+gitGraph
+    commit id: "INIT"
+    branch develop
+    checkout develop
+    commit id: "A"
+    branch feature
+    checkout feature
+    commit id: "WORK"
+    checkout develop
+    merge feature id: "FEATURE_MERGE"
+    branch release
+    checkout release
+    commit id: "PREP_RELEASE"
+    checkout main
+    merge release id: "RELEASE_TO_MAIN"
+    checkout develop
+    merge release id: "RELEASE_TO_DEV"
+
+</div>
+</div>
+
+<aside class="notes"><p>The Gitflow Workflow establishes a structured approach to projects by defining different branches for features, releases, and hotfixes. The workflow uses two primary branches: <code>main</code> for storing the official project history, and <code>develop</code> as an integration branch for features. Feature branches are created off the <code>develop</code> branch and merged back into it once the feature is completed. When the team is ready for a release, a release branch is created off <code>develop</code>, and once the release is finalized, it&#39;s merged into <code>main</code> and <code>develop</code>, then tagged with a version number.</p>
+</aside></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 3. GitHub Flow
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Flowchart
+
+<div class="mermaid">
+gitGraph
+    commit id: "INIT"
+    branch feature
+    checkout feature
+    commit id: "CHANGES"
+    checkout main
+    merge feature id: "PR_MERGE"
+    commit id: "DEPLOY"
+
+</div>
+</div>
+
+<aside class="notes"><p>GitHub Flow is a streamlined workflow that emphasizes continuous delivery principles. Developers create a new branch from the main branch, work on their changes, and open a Pull Request (PR) for review. While the PR is under review, it can be deployed to a staging environment for testing. Once the PR is approved, it&#39;s merged back into the main branch, which is then deployed to production.</p>
+</aside></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 4. GitLab Flow
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Flowchart
+
+<div class="mermaid">
+gitGraph
+    commit id: "INIT"
+    branch staging
+    branch feature
+    checkout feature
+    commit id: "CHANGES"
+    checkout staging
+    merge feature id: "TO_STAGING"
+    commit id: "TEST_OK"
+    checkout main
+    merge staging id: "TO_MAIN"
+
+</div>
+</div>
+
+<aside class="notes"><p>GitLab Flow is a flexible workflow that extends the ideas of GitHub Flow by introducing environment branches in addition to the main branch. Developers work on feature branches created from the main branch. Once ready for testing in a specific environment, they create a Pull Request to an environment branch (e.g., staging or pre-production). After thorough testing and any necessary iterations, the changes are merged into the main branch and deployed to production.</p>
+</aside></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 5. Monorepo Workflow
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Flowchart
+
+<div class="mermaid">
+gitGraph
+    commit id: "INIT"
+    branch feature
+    checkout feature
+    commit id: "MODULAR_CHANGES"
+    checkout main
+    merge feature id: "PR_MERGE"
+    commit id: "PARTIAL_DEPLOY"
+
+</div>
+</div>
+
+<aside class="notes"><p>The Monorepo Workflow is designed for teams managing multiple interdependent projects within a single Git repository. Instead of splitting each service or library into its own repo, all projects live in one centralized codebase. Developers begin by pulling the latest <code>main</code> branch to ensure their local environment is in sync. They then make isolated changes to the relevant parts of the codebase. After development and internal testing, they open a Pull Request for review.</p>
+<p>Once approved, the changes are merged into the <code>main</code> branch. At this point, automated tooling (like CI/CD pipelines) identifies which projects were affected by the changes and triggers builds or deployments only for those components. This allows teams to develop and deploy modular code efficiently while benefiting from shared tooling and unified version control.</p>
+</aside></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Summary
+
+
+<div class="mermaid">
+graph TD
+    A[Start] --> B(Choose Git Workflow)
+    B -->|1. Feature Branch| C1[Create feature branch from main]
+    B -->|2. Gitflow| D1[Create feature from develop]
+    B -->|3. GitHub Flow| E1[Create branch from main]
+    B -->|4. GitLab Flow| F1[Create feature from main]
+    B -->|5. Monorepo| G1[Pull latest main]
+
+    C1 --> C2[Develop & Test Feature]
+    C2 --> C3[Open Pull Request]
+    C3 --> C4{Review Approved?}
+    C4 -->|Yes| C5[Merge to Main]
+    C4 -->|No| C2
+    C5 --> C6[Delete Feature Branch]
+    C6 --> C7[End]
+
+    D1 --> D2[Develop & Test Feature]
+    D2 --> D3[Merge into Develop]
+    D3 --> D4{Release Ready?}
+    D4 -->|Yes| D5[Create Release Branch]
+    D4 -->|No| D2
+    D5 --> D6[Prepare Release]
+    D6 --> D7[Merge to Main & Tag]
+    D7 --> D8[Merge back to Develop]
+    D8 --> D9[Delete Release Branch]
+    D9 --> D10[End]
+
+    E1 --> E2[Develop, Test, Deploy]
+    E2 --> E3[Open Pull Request]
+    E3 --> E4{Review Approved?}
+    E4 -->|Yes| E5[Merge to Main]
+    E4 -->|No| E2
+    E5 --> E6[Deploy Main]
+    E6 --> E7[End]
+
+    F1 --> F2[Develop & Test Feature]
+    F2 --> F3[Create PR for Environment Branch]
+    F3 --> F4[Merge to Environment Branch]
+    F4 --> F5[Test in Environment]
+    F5 --> F6{Passes Tests?}
+    F6 -->|Yes| F7[Merge to Main]
+    F6 -->|No| F2
+    F7 --> F8[Deploy Main]
+    F8 --> F9[End]
+
+    G1 --> G2[Develop & Test Changes]
+    G2 --> G3[Create Pull Request]
+    G3 --> G4{Review Approved?}
+    G4 -->|Yes| G5[Merge to Main]
+    G4 -->|No| G2
+    G5 --> G6[Deploy Affected Services]
+    G6 --> G7[End]
+
+</div>
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 6. Choosing the Right Workflow
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### 6.1 Feature Branch Workflow
+
+- ✅ **Use when**: Small team, simple projects, continuous deployment
+- ❌ **Avoid when**: Complex release cycles, multiple environments needed
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### 6.2 Gitflow Workflow  
+
+- ✅ **Use when**: Scheduled releases, large teams, enterprise software
+- ❌ **Avoid when**: Continuous deployment, simple projects
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### 6.3 GitHub Flow
+
+- ✅ **Use when**: Web applications, SaaS products, strong CI/CD
+- ❌ **Avoid when**: Scheduled releases, complex testing requirements
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### 6.4 GitLab Flow
+
+- ✅ **Use when**: Multiple environments, regulated industries, controlled deployments
+- ❌ **Avoid when**: Simple projects, continuous deployment needs
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### 6.5 Monorepo Workflow
+
+- ✅ **Use when**: Microservices, shared libraries, large organizations
+- ❌ **Avoid when**: Simple projects, limited tooling expertise
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Considerations
+- Branch Naming Conventions: Establish a clear and consistent naming convention for branches to ensure they are easily identifiable and relate to their purpose (e.g., feature/, bugfix/, release/).
+- Pull Requests/Merge Requests: Utilize pull requests or merge requests for code review, discussion, and approval before merging changes into main branches.
+- Access Control: Set up appropriate access controls to restrict who can merge into critical branches such as the main or release branches.
 </div></script></section></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -653,227 +1148,12 @@ Expand your knowledge with these helpful resources:
 - [Shields and Badges](https://github.com/badges/shields) — Create custom badges for your projects
 - [GitHub Awesome List](https://github.com/tiimgreen/github-cheat-sheet) — Curated GitHub tips and tricks
 - [.gitignore Templates](https://github.com/github/gitignore) — Ready-to-use .gitignore files for various languages and tools
-</div></script></section></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+</div></script></section></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-## Platforms and Code Review 🤝
-
-To be done...
-</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Best practices for writing commits
-Writing good commit messages is important to make your project history readable, easily scannable and, of course, understandable by anyone involved in the project.
-
-<img src="https://imgs.xkcd.com/comics/git_commit_2x.png" alt="git_commit_2x.png" style="object-fit: scale-down">
-</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### 1. Use the imperative verb
-
-It is best that the commit message completes this sentence: "If I apply this commit, then this commit..."
-- Add a new search feature
-- Fix a problem with the top bar
-- Change the default system color
-- Remove a random notification
-</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### 2. Use a maximum of 50 characters for your commit message
-
-Be short and concise. If you have a lot to explain... Surely it is that your commit does too many things. 
-- git commit -m "Add new search feature"
-- git commit -m "Change typography to improve performance"
-</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### 3. Use a prefix for your commits to make them more semantic
-
-When a project grows, there need to be certain rules in place to make the history readable.
-These would be the prefixes:
-- Docs: Changes in documentation.
-- Refactor: Refactoring code as variable or function name changes.
-- Test: Add tests or edit an existing one.
-</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### References
-
-- [The Ultimate Guide to Writing Effective Commit Messages](https://skerritt.blog/writing-better-commit-messages/): Best Practices and Conventional Commits
-- [Buenas prácticas para escribir commits en Git](https://midu.dev/buenas-practicas-escribir-commits-git): midudev
-- [Estrategia de Git: Ship / Show / Ask](https://midu.dev/ship-show-ask-estrategia-git): midudev
-</div></script></section></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-## Git Strategy 🛠️
-
-To be done...
-</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Purpose
-To establish a robust branching strategy in Git to ensure a streamlined and efficient workflow that facilitates collaboration, feature development, bug fixing, and release management.
-</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Considerations
-- Branch Naming Conventions: Establish a clear and consistent naming convention for branches to ensure they are easily identifiable and relate to their purpose (e.g., feature/, bugfix/, release/).
-- Pull Requests/Merge Requests: Utilize pull requests or merge requests for code review, discussion, and approval before merging changes into main branches.
-- Access Control: Set up appropriate access controls to restrict who can merge into critical branches such as the main or release branches.
-</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### 1. Feature Branch Workflow
-</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-#### Flowchart
-
-
-<div class="mermaid">
-graph TD;
-    A[Start] --> B[Create Feature Branch from Main]
-    B --> C[Develop and Test Feature]
-    C --> D[Create Pull Request]
-    D --> E{Review Approved?}
-    E -->|Yes| F[Merge to Main]
-    E -->|No| C
-    F --> G[Delete Feature Branch]
-    G --> H[End]
-
-</div>
-</div>
-
-<aside class="notes"><p>The Feature Branch Workflow is centered around the principle of creating isolated branches for feature development. When a developer is tasked with creating a new feature or fixing a bug, they create a new branch off the main branch. This branch is referred to as a feature branch. All the development work related to that feature is done in this branch, keeping the main branch unaffected. Once the feature development is completed and tested, a Pull Request (PR) is created for code review. If the PR is approved, the feature branch is merged back into the main branch and then deleted to maintain a clean repository.</p>
-</aside></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-#### Team Usage
-In a team setting, the Feature Branch Workflow enables a clean and organized method of introducing new features or fixes. Each developer works on their assigned tasks in isolated branches, ensuring that the main branch always has a stable, deployable version of the project. The process of code review before merging helps in maintaining code quality and sharing knowledge among the team.
-</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### 2. Gitflow Workflow
-</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-#### Flowchart
-
-<div class="mermaid">
-graph TD;
-    A[Start] --> B[Create Feature Branch from Develop]
-    B --> C[Develop and Test Feature]
-    C --> D[Merge to Develop]
-    D --> E{Release Ready?}
-    E -->|Yes| F[Create Release Branch from Develop]
-    E -->|No| B
-    F --> G[Prepare Release]
-    G --> H[Merge to Main and Tag Release]
-    H --> I[Merge to Develop]
-    I --> J[Delete Release Branch]
-    J --> K[End]
-
-</div>
-</div>
-
-<aside class="notes"><p>The Gitflow Workflow establishes a structured approach to projects by defining different branches for features, releases, and hotfixes. The workflow uses two primary branches: <code>main</code> for storing the official project history, and <code>develop</code> as an integration branch for features. Feature branches are created off the <code>develop</code> branch and merged back into it once the feature is completed. When the team is ready for a release, a release branch is created off <code>develop</code>, and once the release is finalized, it&#39;s merged into <code>main</code> and <code>develop</code>, then tagged with a version number.</p>
-</aside></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-#### Team Usage
-This workflow is suitable for larger teams and projects where there are regular releases and a need for parallel development on multiple features. It provides clear paths for feature development, releases, and maintenance, ensuring that there's a structured approach to deploying and maintaining the project.
-</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### 3. GitHub Flow
-</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-#### Flowchart
-
-<div class="mermaid">
-graph TD;
-    A[Start] --> B[Create Branch from Main]
-    B --> C[Develop, Test, and Deploy]
-    C --> D[Create Pull Request]
-    D --> E{Review Approved?}
-    E -->|Yes| F[Merge to Main]
-    E -->|No| C
-    F --> G[Deploy Main]
-    G --> H[End]
-
-</div>
-</div>
-
-<aside class="notes"><p>GitHub Flow is a streamlined workflow that emphasizes continuous delivery principles. Developers create a new branch from the main branch, work on their changes, and open a Pull Request (PR) for review. While the PR is under review, it can be deployed to a staging environment for testing. Once the PR is approved, it&#39;s merged back into the main branch, which is then deployed to production.</p>
-</aside></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-#### Team Usage
-GitHub Flow encourages a culture of continuous delivery, where developers are integrating their code into the main branch frequently. It's a straightforward workflow that encourages continuous feedback, and is suitable for teams that want to deploy often and get quick feedback on their changes.
-</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### 4. GitLab Flow
-</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-#### Flowchart
-
-<div class="mermaid">
-graph TD;
-    A[Start] --> B[Create Feature Branch from Main]
-    B --> C[Develop and Test Feature]
-    C --> D[Create Pull Request for Environment Branch]
-    D --> E[Merge to Environment Branch]
-    E --> F[Test in Environment]
-    F --> G{Passes Tests?}
-    G -->|Yes| H[Merge to Main]
-    G -->|No| C
-    H --> I[Deploy Main]
-    I --> J[End]
-
-</div>
-</div>
-
-<aside class="notes"><p>GitLab Flow is a flexible workflow that extends the ideas of GitHub Flow by introducing environment branches in addition to the main branch. Developers work on feature branches created from the main branch. Once ready for testing in a specific environment, they create a Pull Request to an environment branch (e.g., staging or pre-production). After thorough testing and any necessary iterations, the changes are merged into the main branch and deployed to production.</p>
-</aside></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-#### Team Usage
-This workflow is suited for teams that have multiple environments for testing and validation before releasing to production. It provides a structured approach to manage and promote code across various environments while maintaining a clean and deployable main branch.
-</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### 5. Monorepo Workflow
-</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-#### Flowchart
-
-<div class="mermaid">
-graph TD;
-    A[Start] --> B[Pull Latest Main]
-    B --> C[Develop and Test Changes]
-    C --> D[Create Pull Request]
-    D --> E{Review Approved?}
-    E -->|Yes| F[Merge to Main]
-    E -->|No| C
-    F --> G[Deploy Affected Services]
-    G --> H[End]
-
-</div>
-</div>
-
-<aside class="notes"><p>The Monorepo Workflow is designed for teams managing multiple interdependent projects within a single Git repository. Instead of splitting each service or library into its own repo, all projects live in one centralized codebase. Developers begin by pulling the latest <code>main</code> branch to ensure their local environment is in sync. They then make isolated changes to the relevant parts of the codebase. After development and internal testing, they open a Pull Request for review.</p>
-<p>Once approved, the changes are merged into the <code>main</code> branch. At this point, automated tooling (like CI/CD pipelines) identifies which projects were affected by the changes and triggers builds or deployments only for those components. This allows teams to develop and deploy modular code efficiently while benefiting from shared tooling and unified version control.</p>
-</aside></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-#### Team Usage
-
-This strategy is highly effective for large teams working on interconnected services—such as frontend, backend, and shared libraries—who want to reduce the overhead of managing multiple repositories. The workflow encourages collaboration and visibility, supports atomic commits across projects, and simplifies dependency management. However, it requires strong discipline around folder structures, commit scoping, and automated tooling to remain scalable.
-</div></script></section></section></div>
+# Thank you 🧑‍💻
+> Git: Tips & Tricks
+</div></script></section></div>
     </div>
 
     <script src="dist/reveal.js"></script>
